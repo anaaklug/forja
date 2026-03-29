@@ -1,11 +1,258 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pt-BR">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Forja</title>
+  <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    
+
+  <!-- ─── AVISO DE LEVEL UP ─────────────────────────────────────── -->
+  <div id="aviso-levelup" class="aviso-levelup">
+    <p class="levelup-titulo">⚔ Nível acima!</p>
+    <p>Você chegou ao <strong>Nível <span id="levelup-nivel"></span></strong></p>
+    <p class="levelup-nome" id="levelup-nome"></p>
+  </div>
+
+  <!-- ─── CONTAINER PRINCIPAL ──────────────────────────────────── -->
+  <div id="app">
+
+    <!-- ── TELA: INÍCIO (DASHBOARD) ──────────────────────────── -->
+    <div id="tela-inicio" class="tela">
+
+      <header class="cabecalho">
+        <span class="logo">Forja</span>
+        <span class="data-hoje" id="data-hoje"></span>
+      </header>
+
+      <main class="conteudo">
+
+        <!-- Personagem resumido -->
+        <div class="painel-jogador">
+          <div class="sprite-container-pequeno">
+            <!-- Um elemento por nível — só o ativo aparece -->
+            <img class="sprite-nivel" data-nivel="1" src="assets/sprites/nivel1.png" alt="Nível 1">
+            <img class="sprite-nivel" data-nivel="2" src="assets/sprites/nivel2.png" alt="Nível 2">
+            <img class="sprite-nivel" data-nivel="3" src="assets/sprites/nivel3.png" alt="Nível 3">
+            <img class="sprite-nivel" data-nivel="4" src="assets/sprites/nivel4.png" alt="Nível 4">
+            <img class="sprite-nivel" data-nivel="5" src="assets/sprites/nivel5.png" alt="Nível 5">
+            <img class="sprite-nivel" data-nivel="6" src="assets/sprites/nivel6.png" alt="Nível 6">
+            <img class="sprite-nivel" data-nivel="7" src="assets/sprites/nivel7.png" alt="Nível 7">
+            <img class="sprite-nivel" data-nivel="8" src="assets/sprites/nivel8.png" alt="Nível 8">
+          </div>
+          <div class="jogador-info">
+            <p class="jogador-nome" id="jogador-nome">Guerreiro</p>
+            <p class="jogador-nivel" id="jogador-nivel">Nível 1 — Novato</p>
+            <div class="xp-barra-wrap">
+              <div class="xp-labels">
+                <span>XP</span>
+                <span><span id="jogador-xp-atual">0</span> / <span id="jogador-xp-proximo">100</span></span>
+              </div>
+              <div class="xp-barra">
+                <div class="xp-barra-preenchimento" id="xp-barra-preenchimento"></div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Stats rápidos -->
+        <div class="stats-grid">
+          <div class="stat-card">
+            <span class="stat-valor" id="stat-streak">0</span>
+            <span class="stat-label">Sequência</span>
+          </div>
+          <div class="stat-card">
+            <span class="stat-valor" id="stat-hoje">0/0</span>
+            <span class="stat-label">Hoje</span>
+          </div>
+          <div class="stat-card">
+            <span class="stat-valor" id="stat-xp">0</span>
+            <span class="stat-label">XP total</span>
+          </div>
+        </div>
+
+        <!-- Lista de hábitos -->
+        <p class="secao-titulo">Hábitos de hoje</p>
+        <div id="lista-habitos" class="lista-habitos"></div>
+
+        <button class="btn-adicionar" onclick="mostrarTela('novo-habito')">
+          + Forjar novo hábito
+        </button>
+
+      </main>
+    </div>
+
+    <!-- ── TELA: NOVO HÁBITO ──────────────────────────────────── -->
+    <div id="tela-novo-habito" class="tela">
+
+      <header class="cabecalho">
+        <button class="btn-voltar" onclick="mostrarTela('inicio')">← Voltar</button>
+        <span class="logo">Novo hábito</span>
+        <span></span>
+      </header>
+
+      <main class="conteudo">
+
+        <div class="form-grupo">
+          <label class="form-label" for="input-nome">Nome do hábito</label>
+          <input class="form-input" id="input-nome" type="text"
+            placeholder="Ex: Meditar 10 minutos...">
+        </div>
+
+        <div class="form-grupo">
+          <label class="form-label">Frequência</label>
+          <div class="btn-grupo">
+            <button class="btn-frequencia ativo" data-valor="diario">Diário</button>
+            <button class="btn-frequencia" data-valor="semana">Seg–Sex</button>
+            <button class="btn-frequencia" data-valor="semanal">Semanal</button>
+          </div>
+        </div>
+
+        <div class="form-grupo">
+          <label class="form-label">Dificuldade</label>
+          <div class="btn-grupo">
+            <button class="btn-dificuldade" data-valor="facil">
+              Fácil<br><small>+10 XP</small>
+            </button>
+            <button class="btn-dificuldade ativo" data-valor="medio">
+              Médio<br><small>+20 XP</small>
+            </button>
+            <button class="btn-dificuldade" data-valor="dificil">
+              Difícil<br><small>+30 XP</small>
+            </button>
+          </div>
+        </div>
+
+        <button class="btn-primario" onclick="salvarHabito()">
+          Forjar hábito
+        </button>
+
+      </main>
+    </div>
+
+    <!-- ── TELA: PERSONAGEM ───────────────────────────────────── -->
+    <div id="tela-personagem" class="tela">
+
+      <header class="cabecalho">
+        <span class="logo">Meu personagem</span>
+      </header>
+
+      <main class="conteudo">
+
+        <div class="personagem-destaque">
+          <div class="sprite-container-grande">
+            <img class="sprite-nivel" data-nivel="1" src="assets/sprites/nivel1.png" alt="Nível 1">
+            <img class="sprite-nivel" data-nivel="2" src="assets/sprites/nivel2.png" alt="Nível 2">
+            <img class="sprite-nivel" data-nivel="3" src="assets/sprites/nivel3.png" alt="Nível 3">
+            <img class="sprite-nivel" data-nivel="4" src="assets/sprites/nivel4.png" alt="Nível 4">
+            <img class="sprite-nivel" data-nivel="5" src="assets/sprites/nivel5.png" alt="Nível 5">
+            <img class="sprite-nivel" data-nivel="6" src="assets/sprites/nivel6.png" alt="Nível 6">
+            <img class="sprite-nivel" data-nivel="7" src="assets/sprites/nivel7.png" alt="Nível 7">
+            <img class="sprite-nivel" data-nivel="8" src="assets/sprites/nivel8.png" alt="Nível 8">
+          </div>
+          <p class="personagem-nome" id="personagem-nome">Guerreiro</p>
+          <p class="personagem-nivel" id="personagem-nivel">Nível 1 — Novato</p>
+          <div class="xp-barra-wrap">
+            <div class="xp-labels">
+              <span id="personagem-xp-atual">0</span>
+              <span>próx. nível: <span id="personagem-xp-proximo">100</span> XP</span>
+            </div>
+            <div class="xp-barra">
+              <div class="xp-barra-preenchimento" id="personagem-xp-barra"></div>
+            </div>
+          </div>
+        </div>
+
+        <p class="secao-titulo">Evolução</p>
+        <div class="grade-niveis">
+          <div class="card-nivel" data-nivel="1"><span class="nivel-num">Nível 1</span><span class="nivel-nome">Novato</span></div>
+          <div class="card-nivel" data-nivel="2"><span class="nivel-num">Nível 2</span><span class="nivel-nome">Aprendiz</span></div>
+          <div class="card-nivel" data-nivel="3"><span class="nivel-num">Nível 3</span><span class="nivel-nome">Ferreiro Aprendiz</span></div>
+          <div class="card-nivel" data-nivel="4"><span class="nivel-num">Nível 4</span><span class="nivel-nome">Ferreiro</span></div>
+          <div class="card-nivel" data-nivel="5"><span class="nivel-num">Nível 5</span><span class="nivel-nome">Ferreiro Hábil</span></div>
+          <div class="card-nivel" data-nivel="6"><span class="nivel-num">Nível 6</span><span class="nivel-nome">Mestre Ferreiro</span></div>
+          <div class="card-nivel" data-nivel="7"><span class="nivel-num">Nível 7</span><span class="nivel-nome">Lenda da Forja</span></div>
+          <div class="card-nivel" data-nivel="8"><span class="nivel-num">Nível 8</span><span class="nivel-nome">Imortal da Forja</span></div>
+        </div>
+
+        <p class="secao-titulo">Equipamentos <span class="tag-em-breve">vem aí</span></p>
+        <div class="slots-equipamento">
+          <div class="slot">⛑<span>Cabeça</span></div>
+          <div class="slot">🛡<span>Armadura</span></div>
+          <div class="slot">⚔<span>Arma</span></div>
+        </div>
+
+      </main>
+    </div>
+
+    <!-- ── TELA: HÁBITOS (lista completa) ────────────────────── -->
+    <div id="tela-habitos" class="tela">
+
+      <header class="cabecalho">
+        <span class="logo">Meus hábitos</span>
+      </header>
+
+      <main class="conteudo">
+        <p class="secao-titulo">Todos os hábitos</p>
+        <div id="lista-habitos-completa" class="lista-habitos"></div>
+        <button class="btn-adicionar" onclick="mostrarTela('novo-habito')">
+          + Forjar novo hábito
+        </button>
+      </main>
+    </div>
+
+    <!-- ── TELA: LOJA (preview v2) ────────────────────────────── -->
+    <div id="tela-loja" class="tela">
+
+      <header class="cabecalho">
+        <span class="logo">A Forja</span>
+        <span class="subtitulo-cabecalho">loja de itens</span>
+      </header>
+
+      <main class="conteudo">
+        <div class="loja-hero">
+          <span class="loja-icone">🔥</span>
+          <p class="loja-titulo">A Forja está sendo construída</p>
+          <p class="loja-subtitulo">Em breve você poderá gastar suas moedas em equipamentos para o seu personagem.</p>
+          <span class="badge-v2">✦ Disponível na versão 2.0</span>
+        </div>
+
+        <p class="secao-titulo">Prévia dos itens</p>
+        <div class="grade-loja">
+          <div class="item-loja bloqueado"><span>⛑</span><p>Elmo de ferro</p><small>🪙 50</small></div>
+          <div class="item-loja bloqueado"><span>🗡</span><p>Espada longa</p><small>🪙 80</small></div>
+          <div class="item-loja bloqueado"><span>🛡</span><p>Escudo de aço</p><small>🪙 70</small></div>
+          <div class="item-loja bloqueado"><span>🧥</span><p>Armadura leve</p><small>🪙 90</small></div>
+          <div class="item-loja bloqueado"><span>🪄</span><p>Cajado arcano</p><small>🪙 120</small></div>
+          <div class="item-loja bloqueado"><span>💍</span><p>Anel do ferreiro</p><small>🪙 150</small></div>
+        </div>
+      </main>
+    </div>
+
+    <!-- ─── NAVEGAÇÃO INFERIOR ────────────────────────────────── -->
+    <nav class="nav-inferior">
+      <button class="nav-item ativo" data-tela="inicio" onclick="mostrarTela('inicio')">
+        <span>⚔</span>Início
+      </button>
+      <button class="nav-item" data-tela="personagem" onclick="mostrarTela('personagem')">
+        <span>✦</span>Personagem
+      </button>
+      <button class="nav-item" data-tela="habitos" onclick="mostrarTela('habitos')">
+        <span>☰</span>Hábitos
+      </button>
+      <button class="nav-item" data-tela="loja" onclick="mostrarTela('loja')">
+        <span>🏪</span>Forja<div class="badge-nav">v2</div>
+      </button>
+    </nav>
+
+  </div>
+
+  <!-- ─── SCRIPTS ───────────────────────────────────────────────── -->
+  <script src="js/storage.js"></script>
+  <script src="js/jogador.js"></script>
+  <script src="js/habitos.js"></script>
+  <script src="js/app.js"></script>
+
 </body>
 </html>
