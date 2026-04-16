@@ -8,17 +8,17 @@
 </head>
 <body>
 
-  <!-- ─── AVISO DE LEVEL UP ─────────────────────────────────────── -->
+  <!-- _______________ AVISO DE LEVEL UP _______________-->
   <div id="aviso-levelup" class="aviso-levelup">
     <p class="levelup-titulo">⚔ Nível acima!</p>
     <p>Você chegou ao <strong>Nível <span id="levelup-nivel"></span></strong></p>
     <p class="levelup-nome" id="levelup-nome"></p>
   </div>
 
-  <!-- ─── CONTAINER PRINCIPAL ──────────────────────────────────── -->
+  <!-- _______________ CONTAINER PRINCIPAL _______________ -->
   <div id="app">
 
-    <!-- ── TELA: INÍCIO (DASHBOARD) ──────────────────────────── -->
+    <!-- _______________ TELA: INÍCIO (DASHBOARD) _______________ -->
     <div id="tela-inicio" class="tela">
 
       <header class="cabecalho">
@@ -28,11 +28,11 @@
 
       <main class="conteudo">
 
-        <!-- Personagem resumido -->
+        <!-- _______________Personagem resumido _______________-->
         <div class="painel-jogador">
           <div class="sprite-container-pequeno">
-            <!-- Um elemento por nível — só o ativo aparece -->
-            <img class="sprite-nivel" data-nivel="1" src="assets/sprites/nivel1.png" alt="Nível 1">
+            <!-- _______________Um elemento por nível — só o ativo aparece_______________ -->
+            <img class="sprite-nivel" data-nivel="1" src="assets/sprites/escudeiro_1.png" alt="Nível 1">
             <img class="sprite-nivel" data-nivel="2" src="assets/sprites/nivel2.png" alt="Nível 2">
             <img class="sprite-nivel" data-nivel="3" src="assets/sprites/nivel3.png" alt="Nível 3">
             <img class="sprite-nivel" data-nivel="4" src="assets/sprites/nivel4.png" alt="Nível 4">
@@ -43,7 +43,7 @@
           </div>
           <div class="jogador-info">
             <p class="jogador-nome" id="jogador-nome">Guerreiro</p>
-            <p class="jogador-nivel" id="jogador-nivel">Nível 1 — Novato</p>
+            <p class="jogador-nivel" id="jogador-nivel">Nível 1 — Escudeiro</p>
             <div class="xp-barra-wrap">
               <div class="xp-labels">
                 <span>XP</span>
@@ -56,7 +56,7 @@
           </div>
         </div>
 
-        <!-- Stats rápidos -->
+      <!-- _______________Stats rápidos_______________ -->
         <div class="stats-grid">
           <div class="stat-card">
             <span class="stat-valor" id="stat-streak">0</span>
@@ -72,7 +72,7 @@
           </div>
         </div>
 
-        <!-- Lista de hábitos -->
+      <!-- _______________Lista de hábitos_______________ -->
         <p class="secao-titulo">Hábitos de hoje</p>
         <div id="lista-habitos" class="lista-habitos"></div>
 
@@ -83,7 +83,7 @@
       </main>
     </div>
 
-    <!-- ── TELA: NOVO HÁBITO ──────────────────────────────────── -->
+    <!-- _______________ TELA: NOVO HÁBITO _______________ -->
     <div id="tela-novo-habito" class="tela">
 
       <header class="cabecalho">
@@ -131,7 +131,7 @@
       </main>
     </div>
 
-    <!-- ── TELA: PERSONAGEM ───────────────────────────────────── -->
+    <!-- _______________ TELA: PERSONAGEM _______________ -->
     <div id="tela-personagem" class="tela">
 
       <header class="cabecalho">
@@ -142,7 +142,7 @@
 
         <div class="personagem-destaque">
           <div class="sprite-container-grande">
-            <img class="sprite-nivel" data-nivel="1" src="assets/sprites/nivel1.png" alt="Nível 1">
+            <img class="sprite-nivel" data-nivel="1" src="assets/sprites/escudeiro_1.png" alt="Nível 1">
             <img class="sprite-nivel" data-nivel="2" src="assets/sprites/nivel2.png" alt="Nível 2">
             <img class="sprite-nivel" data-nivel="3" src="assets/sprites/nivel3.png" alt="Nível 3">
             <img class="sprite-nivel" data-nivel="4" src="assets/sprites/nivel4.png" alt="Nível 4">
@@ -152,7 +152,7 @@
             <img class="sprite-nivel" data-nivel="8" src="assets/sprites/nivel8.png" alt="Nível 8">
           </div>
           <p class="personagem-nome" id="personagem-nome">Guerreiro</p>
-          <p class="personagem-nivel" id="personagem-nivel">Nível 1 — Novato</p>
+          <p class="personagem-nivel" id="personagem-nivel">Nível 1 — Escudeiro</p>
           <div class="xp-barra-wrap">
             <div class="xp-labels">
               <span id="personagem-xp-atual">0</span>
@@ -166,14 +166,14 @@
 
         <p class="secao-titulo">Evolução</p>
         <div class="grade-niveis">
-          <div class="card-nivel" data-nivel="1"><span class="nivel-num">Nível 1</span><span class="nivel-nome">Novato</span></div>
-          <div class="card-nivel" data-nivel="2"><span class="nivel-num">Nível 2</span><span class="nivel-nome">Aprendiz</span></div>
-          <div class="card-nivel" data-nivel="3"><span class="nivel-num">Nível 3</span><span class="nivel-nome">Ferreiro Aprendiz</span></div>
-          <div class="card-nivel" data-nivel="4"><span class="nivel-num">Nível 4</span><span class="nivel-nome">Ferreiro</span></div>
-          <div class="card-nivel" data-nivel="5"><span class="nivel-num">Nível 5</span><span class="nivel-nome">Ferreiro Hábil</span></div>
-          <div class="card-nivel" data-nivel="6"><span class="nivel-num">Nível 6</span><span class="nivel-nome">Mestre Ferreiro</span></div>
-          <div class="card-nivel" data-nivel="7"><span class="nivel-num">Nível 7</span><span class="nivel-nome">Lenda da Forja</span></div>
-          <div class="card-nivel" data-nivel="8"><span class="nivel-num">Nível 8</span><span class="nivel-nome">Imortal da Forja</span></div>
+          <div class="card-nivel" data-nivel="1"><span class="nivel-num">Nível 1</span><span class="nivel-nome">Escudeiro</span></div>
+          <div class="card-nivel" data-nivel="2"><span class="nivel-num">Nível 2</span><span class="nivel-nome">Cavaleiro</span></div>
+          <div class="card-nivel" data-nivel="3"><span class="nivel-num">Nível 3</span><span class="nivel-nome">Templário</span></div>
+          <div class="card-nivel" data-nivel="4"><span class="nivel-num">Nível 4</span><span class="nivel-nome">Falange</span></div>
+          <div class="card-nivel" data-nivel="5"><span class="nivel-num">Nível 5</span><span class="nivel-nome">Paladino</span></div>
+          <div class="card-nivel" data-nivel="6"><span class="nivel-num">Nível 6</span><span class="nivel-nome">Vanguarda</span></div>
+          <div class="card-nivel" data-nivel="7"><span class="nivel-num">Nível 7</span><span class="nivel-nome">Guardião</span></div>
+          <div class="card-nivel" data-nivel="8"><span class="nivel-num">Nível 8</span><span class="nivel-nome">Grão-Mestre</span></div>
         </div>
 
         <p class="secao-titulo">Equipamentos <span class="tag-em-breve">vem aí</span></p>
@@ -186,7 +186,7 @@
       </main>
     </div>
 
-    <!-- ── TELA: HÁBITOS (lista completa) ────────────────────── -->
+    <!-- _______________ TELA: HÁBITOS (lista completa) _______________ -->
     <div id="tela-habitos" class="tela">
 
       <header class="cabecalho">
@@ -202,7 +202,7 @@
       </main>
     </div>
 
-    <!-- ── TELA: LOJA (preview v2) ────────────────────────────── -->
+    <!-- _______________ TELA: LOJA (preview beta) _______________ -->
     <div id="tela-loja" class="tela">
 
       <header class="cabecalho">
@@ -215,7 +215,7 @@
           <span class="loja-icone">🔥</span>
           <p class="loja-titulo">A Forja está sendo construída</p>
           <p class="loja-subtitulo">Em breve você poderá gastar suas moedas em equipamentos para o seu personagem.</p>
-          <span class="badge-v2">✦ Disponível na versão 2.0</span>
+          <span class="badge-v2">✦ Disponível na versão beta!</span>
         </div>
 
         <p class="secao-titulo">Prévia dos itens</p>
@@ -230,7 +230,7 @@
       </main>
     </div>
 
-    <!-- ─── NAVEGAÇÃO INFERIOR ────────────────────────────────── -->
+    <!-- _______________ NAVEGAÇÃO INFERIOR _______________ -->
     <nav class="nav-inferior">
       <button class="nav-item ativo" data-tela="inicio" onclick="mostrarTela('inicio')">
         <span>⚔</span>Início
@@ -248,7 +248,7 @@
 
   </div>
 
-  <!-- ─── SCRIPTS ───────────────────────────────────────────────── -->
+  <!-- _______________ SCRIPTS _______________ -->
   <script src="js/storage.js"></script>
   <script src="js/jogador.js"></script>
   <script src="js/habitos.js"></script>

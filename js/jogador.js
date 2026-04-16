@@ -4,14 +4,14 @@ const Jogador = {
 
   // Configuração dos níveis — quantos XP precisa para cada um
   niveis: [
-    { nivel: 1, nome: "Novato",            xpNecessario: 0   },
-    { nivel: 2, nome: "Aprendiz",          xpNecessario: 100 },
-    { nivel: 3, nome: "Ferreiro Aprendiz", xpNecessario: 250 },
-    { nivel: 4, nome: "Ferreiro",          xpNecessario: 500 },
-    { nivel: 5, nome: "Ferreiro Hábil",    xpNecessario: 900 },
-    { nivel: 6, nome: "Mestre Ferreiro",   xpNecessario: 1400 },
-    { nivel: 7, nome: "Lenda da Forja",    xpNecessario: 2000 },
-    { nivel: 8, nome: "Imortal da Forja",  xpNecessario: 2800 },
+    { nivel: 1, nome: "Escudeiro",    xpNecessario: 0   },
+    { nivel: 2, nome: "Cavaleiro",    xpNecessario: 100 },
+    { nivel: 3, nome: "Templário",    xpNecessario: 250 },
+    { nivel: 4, nome: "Falange",      xpNecessario: 500 },
+    { nivel: 5, nome: "Paladino",     xpNecessario: 900 },
+    { nivel: 6, nome: "Vanguarda",    xpNecessario: 1400 },
+    { nivel: 7, nome: "Guardião",     xpNecessario: 2000 },
+    { nivel: 8, nome: "Grão-Mestre",  xpNecessario: 2800 },
   ],
 
   // Carrega os dados do jogador do localStorage
