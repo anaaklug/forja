@@ -43,11 +43,9 @@ function atualizarJogador() {
     proximo ? proximo.xpNecessario : "MAX";
   document.getElementById("personagem-xp-barra").style.width = `${porcentagem}%`;
 
-  // Sprite — troca a imagem conforme o nível
-  const sprites = document.querySelectorAll(".sprite-nivel");
-  sprites.forEach(s => s.classList.remove("ativo"));
-  const spriteAtivo = document.querySelector(`.sprite-nivel[data-nivel="${jogador.nivel}"]`);
-  if (spriteAtivo) spriteAtivo.classList.add("ativo");
+  // Sprite — atualiza em todos os containers
+  document.querySelectorAll(".sprite-nivel").forEach(s => s.classList.remove("ativo"));
+  document.querySelectorAll(`.sprite-nivel[data-nivel="${jogador.nivel}"]`).forEach(s => s.classList.add("ativo"));
 
   // Grade de evolução
   document.querySelectorAll(".card-nivel").forEach(card => {
