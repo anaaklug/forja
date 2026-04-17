@@ -93,22 +93,30 @@ const Habitos = {
   },
 
   // Retorna só os hábitos que devem aparecer hoje
-  habitosDeHoje() {
-    const habitos = this.carregar();
-    const diaDaSemana = new Date().getDay(); // 0 = domingo, 6 = sábado
-    const eDiaUtil = diaDaSemana >= 1 && diaDaSemana <= 5;
+ habitosDeHoje() {
+  const habitos = this.carregar();
+  const hoje = new Date();
+  const diaDaSemana = hoje.getDay();
+  const diaDoMes = hoje.getDate();
 
-    return habitos.filter(h => {
-      if (h.frequencia === "diario") return true;
-      if (h.frequencia === "semana") return eDiaUtil;
-      if (h.frequencia === "semanal") {
-        // Aparece uma vez por semana — mostra todos os dias
-        // mas só permite concluir uma vez por semana
-        return true;
-      }
-      return true;
-    });
-  },
+  return habitos.filter(h => {
+    if (h.frequencia === "diario") return true;
+
+    if (h.frequencia === "semanal") {
+      // Aparece uma vez por semana — mostra na mesma semana da criação
+      const criacao = new Date(h.criadoEm);
+      return diaDaSemana === criacao.getDay();
+    }
+
+    if (h.frequencia === "mensal") {
+      // Aparece uma vez por mês — no mesmo dia do mês da criação
+      const criacao = new Date(h.criadoEm);
+      return diaDoMes === criacao.getDate();
+    }
+
+    return true;
+  });
+},
 
   // Conta quantos hábitos foram concluídos hoje
   concluidosHoje() {

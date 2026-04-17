@@ -199,7 +199,7 @@ function renderizarHabitosCompletos() {
         <div style="flex:1; min-width:0;">
           <span class="habito-nome">${h.nome}</span>
           <div style="font-size:11px; color:var(--cor-texto-suave); margin-top:2px;">
-            ${h.frequencia} · ${totalConclusoes} conclusão(ões)
+            ${{ diario: "Diário", semanal: "Semanal", mensal: "Mensal" }[h.frequencia] || h.frequencia} · ${totalConclusoes} conclusão(ões)
           </div>
         </div>
         <span class="habito-xp">+${xp} XP</span>
