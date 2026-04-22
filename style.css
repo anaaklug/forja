@@ -1,16 +1,16 @@
 /* ─── VARIÁVEIS E RESET ─────────────────────────────────────────── */
 
 :root {
-  --cor-fundo: #f8f8ff;
-  --cor-fundo-secundario: #f0eff8;
-  --cor-superficie: #ffffff;
-  --cor-borda: #e0dff0;
-  --cor-texto: #1a1a2e;
-  --cor-texto-secundario: #5f5e5a;
-  --cor-texto-suave: #9896a0;
-  --cor-roxo: #7f77dd;
-  --cor-roxo-escuro: #534ab7;
-  --cor-roxo-claro: #eeedfe;
+  --cor-fundo: #F0EEF8;
+  --cor-fundo-secundario: #E8E4F4;
+  --cor-superficie: #FFFFFF;
+  --cor-borda: #C9C4E0;
+  --cor-texto: #1C1D26;
+  --cor-texto-secundario: #5A4873;
+  --cor-texto-suave: #9896B0;
+  --cor-roxo: #5A4873;
+  --cor-roxo-escuro: #363759;
+  --cor-roxo-claro: #E8E4F4;
   --cor-destaque: #ef9f27;
   --cor-sucesso: #639922;
   --altura-nav: 64px;
@@ -18,14 +18,16 @@
 }
 
 [data-tema="escuro"] {
-  --cor-fundo: #1a1a2e;
-  --cor-fundo-secundario: #16213e;
-  --cor-superficie: #0f3460;
-  --cor-borda: #2a2a4a;
-  --cor-texto: #f8f8ff;
-  --cor-texto-secundario: #b4b2c8;
-  --cor-texto-suave: #7070a0;
-  --cor-roxo-claro: #2a2550;
+  --cor-fundo: #1C1D26;
+  --cor-fundo-secundario: #363759;
+  --cor-superficie: #2A2640;
+  --cor-borda: #444060;
+  --cor-texto: #F0EEF8;
+  --cor-texto-secundario: #9896B0;
+  --cor-texto-suave: #5A4873;
+  --cor-roxo: #7F77DD;
+  --cor-roxo-escuro: #AFA9EC;
+  --cor-roxo-claro: #2A2640;
 }
 
 * {
@@ -136,8 +138,8 @@ body {
   width: 72px;
   height: 72px;
   border-radius: 8px;
-  background: var(--cor-fundo-secundario);
-  border: 1px solid var(--cor-borda);
+  background: #E8E4F4;
+  border: 1px solid #C9C4E0;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -448,8 +450,8 @@ body {
   width: 120px;
   height: 120px;
   border-radius: 12px;
-  background: var(--cor-fundo-secundario);
-  border: 1px solid var(--cor-borda);
+  background: #E8E4F4;
+  border: 1px solid #C9C4E0;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -723,14 +725,5 @@ body {
 /* ─── PLACEHOLDER DE SPRITE ─────────────────────────────────────── */
 
 .sprite-nivel.ativo {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-size: 28px;
-  background: var(--cor-roxo-claro);
-  color: var(--cor-roxo-escuro);
-}
-
-.sprite-nivel.ativo::after {
-  content: "⚔";
+  display: block;
 }

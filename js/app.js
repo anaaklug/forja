@@ -209,9 +209,28 @@ function renderizarHabitosCompletos() {
   }).join("");
 }
 
+// ─── TEMA ─────────────────────────────────────────────────────────
+
+function alternarTema() {
+  const html = document.documentElement;
+  const temaAtual = html.getAttribute("data-tema");
+  const novoTema = temaAtual === "escuro" ? "claro" : "escuro";
+  html.setAttribute("data-tema", novoTema);
+  Storage.salvar("tema", novoTema);
+  document.getElementById("btn-tema").textContent = novoTema === "escuro" ? "☀️" : "🌙";
+}
+
+function carregarTema() {
+  const temaSalvo = Storage.carregar("tema", "claro");
+  document.documentElement.setAttribute("data-tema", temaSalvo);
+  const btn = document.getElementById("btn-tema");
+  if (btn) btn.textContent = temaSalvo === "escuro" ? "☀️" : "🌙";
+}
+
 // ─── INICIALIZAÇÃO ────────────────────────────────────────────────────────────
 
 function init() {
+  carregarTema();
   // Preenche a data de hoje no cabeçalho
   const hoje = new Date();
   const opcoes = { weekday: "short", day: "numeric", month: "short" };
