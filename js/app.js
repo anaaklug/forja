@@ -231,7 +231,23 @@ function carregarTema() {
 
 function init() {
   carregarTema();
-  // Preenche a data de hoje no cabeçalho
+
+  // Escolhe a logo e o fundo conforme o tema
+  const tema = document.documentElement.getAttribute("data-tema");
+  const logo = document.getElementById("logo-carregamento");
+  const telaLoadingTema = document.getElementById("tela-carregamento");
+
+  if (logo) {
+  logo.src = tema === "escuro"
+    ? "assets/tela_carregamento/forja_white.png"
+    : "assets/tela_carregamento/forja_black.png";
+  }
+
+  if (telaLoadingTema) {
+  telaLoadingTema.style.background = tema === "escuro" ? "#1C1D26" : "#F0EEF8";
+  }
+
+  // Inicializa o app por baixo da tela de loading
   const hoje = new Date();
   const opcoes = { weekday: "short", day: "numeric", month: "short" };
   const dataFormatada = hoje.toLocaleDateString("pt-BR", opcoes);
@@ -244,6 +260,24 @@ function init() {
   renderizarHabitosCompletos();
   iniciarFormulario();
   mostrarTela("inicio");
+
+  // Animação de carregamento
+  const telaLoading = document.getElementById("tela-carregamento");
+  const barra = document.getElementById("loading-barra");
+  if (!telaLoading || !barra) return;
+
+  let progresso = 0;
+  const intervalo = setInterval(() => {
+    progresso += 1;
+    barra.style.width = `${progresso}%`;
+    if (progresso >= 100) {
+      clearInterval(intervalo);
+      setTimeout(() => {
+        telaLoading.classList.add("saindo");
+        setTimeout(() => telaLoading.remove(), 600);
+      }, 300);
+    }
+  }, 30);
 }
 
 document.addEventListener("DOMContentLoaded", init);
